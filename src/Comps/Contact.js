@@ -30,15 +30,15 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="contact-form">
       <div className="contact-inputs"><label htmlFor="username"> Name</label>
-      <input id="username" type="text" name="username"  autoComplete="off"/></div>
+      <input required id="username" type="text" name="username"  autoComplete="off"/></div>
      <div className="contact-inputs">
      <label htmlFor="email">Email Address</label>
-      <input id="email" type="email" name="email" autoComplete="off" />
+      <input id="email" required type="email" name="email" autoComplete="off" />
       <ValidationError prefix="Email" field="email" errors={state.errors} />
      </div>
       <div className="contact-inputs">
       <label htmlFor="message">Message</label>
-      <textarea id="message" name="message" />
+      <textarea id="message" required name="message" />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
       </div>
       <div className="contact-inputs">

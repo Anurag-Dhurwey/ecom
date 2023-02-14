@@ -6,7 +6,6 @@ import SingleProductImage from "../Components/SingleProductImage";
 import FormatePrice from "../Components/FormatePrice";
 const SingleProduct = () => {
   const { id } = useParams();
-  const fi_id = id.slice(1, id.length);
   const { GetSingleProduct, state } = useGlobleContext();
   const { singleProduct } = state;
   const {
@@ -19,10 +18,10 @@ const SingleProduct = () => {
     image,
     company,
   } = singleProduct;
-  console.log(singleProduct);
-  console.log({id,fi_id})
+
+  const dataBaseUrl=process.env.REACT_APP_Data_Base_url;
   useEffect(() => {
-    GetSingleProduct(`https://api.pujakaitem.com/api/products/${id}`);
+    GetSingleProduct(`${dataBaseUrl}/${id}`);
     // eslint-disable-next-line
   }, []);
   return (

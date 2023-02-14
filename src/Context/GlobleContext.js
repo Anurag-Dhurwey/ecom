@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
-
 import ProductReducer from "../Reducer/ProductReducer";
 export const Context=createContext();
 
@@ -37,9 +36,9 @@ export const GlobleContext=({children})=>{
             dispatch({type:"Api_SIngle_Error"})
         }
     }
-
+    const dataBaseUrl=process.env.REACT_APP_Data_Base_url;
     useEffect(()=>{
-        getProduct('https://api.pujakaitem.com/api/products')
+        getProduct(dataBaseUrl)
         // eslint-disable-next-line
     },[])
 
