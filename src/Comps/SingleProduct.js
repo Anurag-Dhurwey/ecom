@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import SingleProductImage from "../Components/SingleProductImage";
 import FormatePrice from "../Components/FormatePrice";
+import StarsRate from "../Components/StarsRate";
 const SingleProduct = () => {
   const { id } = useParams();
   const { GetSingleProduct, state } = useGlobleContext();
@@ -32,7 +33,7 @@ const SingleProduct = () => {
         </div>
         <div className="details">
           <h3>{name}</h3>
-          <h3>{stars}</h3>
+          <StarsRate stars={stars}/>
           <h3>{reviews}</h3>
           <FormatePrice price={price}/>
           <p>{description}</p>

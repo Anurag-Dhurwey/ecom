@@ -1,26 +1,6 @@
 import styled from "styled-components";
 import { useForm, ValidationError } from "@formspree/react";
-const Wrapper = styled.section`
-  padding: 9rem 0 5rem 0;
-  text-align: center;
 
-  .container {
-    margin-top: 6rem;
-
-    .contact-form {
-      max-width: 50rem;
-      margin: auto;
-
-      .contact-inputs {
-        display: flex;
-        flex-direction: column;
-        margin-top:8px
-
-     
-      }
-    }
-  }
-`;
 
 function ContactForm() {
   const [state, handleSubmit] = useForm("xoqzekod");
@@ -72,5 +52,27 @@ const Contact = () => {
     </Wrapper>
   );
 };
+
+const Wrapper = styled.section`
+  padding: 9rem 0 5rem 0;
+  text-align: center;
+
+  .container {
+    margin-top: 6rem;
+
+    .contact-form {
+      max-width: 50rem;
+      margin: auto;
+
+      .contact-inputs {
+        display: flex;
+        flex-direction: column;
+        margin-top:8px
+
+     
+      }
+    }
+  }
+`;
 
 export default Contact;
