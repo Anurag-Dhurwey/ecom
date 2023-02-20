@@ -4,10 +4,9 @@ import Product from "../Components/Product";
 
 
 const Home = () => {
-
   return (
     <Wrapper>
-      <Product/>
+      <Product />
     </Wrapper>
   );
 };

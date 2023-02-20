@@ -7,6 +7,8 @@ import FormatePrice from "./FormatePrice";
 const Product = () => {
   const { state } = useGlobleContext();
   const { faturedProducts } = state;
+  const productList=faturedProducts.length?faturedProducts:"this"
+  console.log(productList)
   return (
     <div>
       <Wrapper>

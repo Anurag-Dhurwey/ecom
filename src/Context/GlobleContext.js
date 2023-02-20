@@ -14,7 +14,6 @@ const initialState={
 export const GlobleContext=({children})=>{
 
     const [state,dispatch]=useReducer(ProductReducer,initialState)
-    console.log(state)
  
     const getProduct=async(api)=>{
         dispatch({type:"Api_Loading"})

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import SingleProductImage from "../Components/SingleProductImage";
 import FormatePrice from "../Components/FormatePrice";
 import StarsRate from "../Components/StarsRate";
+import AddToCart from "../Components/AddToCart";
 const SingleProduct = () => {
   const { id } = useParams();
   const { GetSingleProduct, state } = useGlobleContext();
@@ -38,8 +39,7 @@ const SingleProduct = () => {
           <FormatePrice price={price}/>
           <p>{description}</p>
           <p>{company}</p>
-          <p>{stock}</p>
-          <p></p>
+          <AddToCart stock={stock} />
         </div>
       </div>):<p>some thing went wrong</p>}
     </Wrapper>
