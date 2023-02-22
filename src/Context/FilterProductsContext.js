@@ -25,6 +25,10 @@ const FilterProductsContext = ({ children }) => {
     dispatch({ type: "sortingMethod",payload:products});
   };
 
+  const filterMethod=(e)=>{
+    const keyWord=e.target.value
+    dispatch({type:"filterMethod",payload:{products,keyWord}})
+  }
 
   useEffect(() => {
     dispatch({ type: "sorted_product", payload: products });
@@ -38,7 +42,7 @@ const FilterProductsContext = ({ children }) => {
   const [list_GridView, setList_grid] = useState(true);
   return (
     <FilterContext.Provider
-      value={{ Fstate, list_GridView, setList_grid, sortMethod }}
+      value={{ Fstate, list_GridView, setList_grid, sortMethod ,filterMethod}}
     >
       {children}
     </FilterContext.Provider>

@@ -49,6 +49,18 @@ const MainProductReducer = (state,action) => {
             ...state,
             filteredProducts:newSortedData
         }
+
+        case "filterMethod":
+            let newFilterdData
+            let tempFilteredData=[...action.payload.products]
+                newFilterdData=tempFilteredData.filter((item,i)=>{
+                    return  item.name.toLowerCase().includes(action.payload.keyWord.toLowerCase());
+                })
+            
+            return {
+               ...state,
+               filteredProducts:newFilterdData
+            }
     
         default: return state;
     }
