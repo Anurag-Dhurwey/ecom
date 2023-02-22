@@ -12,10 +12,11 @@ const Home = () => {
   const {list_GridView,setList_grid }=useFilterContext()
   const {pathname}=useLocation()
   const ViewLocation=pathname==='/products'?true:false
+  const HomeLocation=pathname==="/"?true:false
 
   return (
     <Wrapper>
-      <Product classView={{ViewLocation,setList_grid,list_GridView}}  decider={decider} faturedProducts={faturedProducts} />
+      <Product classView={{ViewLocation,setList_grid,list_GridView,HomeLocation}}  decider={decider} faturedProducts={faturedProducts} />
     </Wrapper>
   );
 };

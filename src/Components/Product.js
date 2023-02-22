@@ -4,26 +4,26 @@ import styled from "styled-components";
 import FormatePrice from "./FormatePrice";
 
 const Product = ({ decider, faturedProducts, classView }) => {
-  const { ViewLocation, list_GridView } = classView;
+  const { ViewLocation, list_GridView ,HomeLocation} = classView;
   const productList = faturedProducts.length ? faturedProducts : [];
 
   return (
     <div>
       <Wrapper>
         <div
-          className={ViewLocation ? (list_GridView ? "grid" : "list") : "grid"}
+          className={ViewLocation ? (list_GridView ? "grid" : "list") : ViewLocation?"grid":"d-flex"}
         >
           {decider
             ? productList.map((item, i) => {
                 return (
-                  <div className={list_GridView?"item":"flex-item"} key={i}>
+                  <div className={list_GridView?"item":HomeLocation?"item":"flex-item"} key={i}>
                     {list_GridView ? (
                       <>
                         <figure>
                           <NavLink to={`/singleproduct/${item.id}`}>
                             <img
                               src={item.image}
-                              id={!list_GridView ? "PImg" : "Img"}
+                              className={HomeLocation ? "Img" : "PImg"}
                               alt="product"
                             />
                           </NavLink>
@@ -36,13 +36,13 @@ const Product = ({ decider, faturedProducts, classView }) => {
                           {item.description.slice(0, 100)}.....
                         </p>
                       </>
-                    ) : (
+                    ) : !HomeLocation?(
                       <>
                         <figure className="figure">
                           <NavLink to={`/singleproduct/${item.id}`}>
                             <img
                               src={item.image}
-                              id={!list_GridView ? "PImg" : "Img"}
+                              className={list_GridView ? "Img" : "PImg"}
                               alt="product"
                             />
                           </NavLink>
@@ -56,6 +56,25 @@ const Product = ({ decider, faturedProducts, classView }) => {
                             {item.description.slice(0, 100)}.....
                           </p>
                         </div>
+                      </>
+                    ):(
+                      <>
+                        <figure>
+                          <NavLink to={`/singleproduct/${item.id}`}>
+                            <img
+                              src={item.image}
+                              className={HomeLocation ? "Img" : "PImg"}
+                              alt="product"
+                            />
+                          </NavLink>
+                        </figure>
+                        <div className="itemdetails">
+                          <h3>{item.name}</h3>
+                          <FormatePrice price={item.price} />
+                        </div>
+                        <p className="desc">
+                          {item.description.slice(0, 100)}.....
+                        </p>
                       </>
                     )}
                   </div>
@@ -78,10 +97,15 @@ const Wrapper = styled.div`
     grid-template-columns: 1fr;
     gap: 0rem;
   }
-  #Img {
+
+  .d-flex{
+    display: flex;
+    justify-content: center;
+  }
+  .Img {
     width: 200px;
   }
-  #PImg {
+  .PImg {
     width: 300px;
   }
   .item {
@@ -90,6 +114,7 @@ const Wrapper = styled.div`
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    padding-top:50px;
   }
   .flex-item{
     display:grid;
