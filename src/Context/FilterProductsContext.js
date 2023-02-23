@@ -27,8 +27,21 @@ const FilterProductsContext = ({ children }) => {
 
   const filterMethod=(e)=>{
     const keyWord=e.target.value
-    dispatch({type:"filterMethod",payload:{products,keyWord}})
+    const name=e.target.name
+    dispatch({type:"filterMethod",payload:{products,keyWord,name}})
   }
+
+  const getCategory=(data,property)=>{
+      let categoryArr=data.map((item,i)=>{
+        return item[property]
+      })
+
+     return categoryArr=["All",...new Set(categoryArr)]
+  }
+
+  const category=getCategory(products,"category")
+
+
 
   useEffect(() => {
     dispatch({ type: "sorted_product", payload: products });
@@ -42,7 +55,7 @@ const FilterProductsContext = ({ children }) => {
   const [list_GridView, setList_grid] = useState(true);
   return (
     <FilterContext.Provider
-      value={{ Fstate, list_GridView, setList_grid, sortMethod ,filterMethod}}
+      value={{ Fstate, list_GridView, setList_grid, sortMethod ,filterMethod,category}}
     >
       {children}
     </FilterContext.Provider>
