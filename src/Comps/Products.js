@@ -5,7 +5,7 @@ import {  useLocation } from "react-router-dom";
 import Product from "../Components/Product";
 import Filter from "../Components/Filter";
 const Products = () => {
-const {Fstate,list_GridView,setList_grid,sortMethod ,filterMethod,category}=useFilterContext()
+const {Fstate,list_GridView,setList_grid,sortMethod ,filterMethod,category,company}=useFilterContext()
 const {isData,products,filteredProducts}=Fstate
 const decider=products.length?true:false
 const {pathname}=useLocation()
@@ -14,7 +14,7 @@ const ViewLocation=pathname==='/products'?true:false
   return <Wrapper>
    {isData? <div className="grid-filter-column">
       <div className="filter">
-          <Filter filter={{filterMethod,category}}/>
+          <Filter filter={{filterMethod,category,company}}/>
       </div>
      <div>
       <div className="product_nave">

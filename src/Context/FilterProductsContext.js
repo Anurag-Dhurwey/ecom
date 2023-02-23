@@ -32,6 +32,7 @@ const FilterProductsContext = ({ children }) => {
   }
 
   const getCategory=(data,property)=>{
+    console.log(data)
       let categoryArr=data.map((item,i)=>{
         return item[property]
       })
@@ -40,6 +41,7 @@ const FilterProductsContext = ({ children }) => {
   }
 
   const category=getCategory(products,"category")
+  const company=getCategory(products,"company")
 
 
 
@@ -55,7 +57,7 @@ const FilterProductsContext = ({ children }) => {
   const [list_GridView, setList_grid] = useState(true);
   return (
     <FilterContext.Provider
-      value={{ Fstate, list_GridView, setList_grid, sortMethod ,filterMethod,category}}
+      value={{ Fstate, list_GridView, setList_grid, sortMethod ,filterMethod,category,company}}
     >
       {children}
     </FilterContext.Provider>

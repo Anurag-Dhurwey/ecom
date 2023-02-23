@@ -1,3 +1,5 @@
+
+
 const MainProductReducer = (state, action) => {
   switch (action.type) {
     case "GET_ALL_PRODUCTS":
@@ -48,30 +50,32 @@ const MainProductReducer = (state, action) => {
       };
 
     case "filterMethod":
-      let newFilterdData;
       let tempFilteredData = [...action.payload.products];
-    
       if (action.payload.name === "search") {
-        newFilterdData = tempFilteredData.filter((item, i) => {
+        tempFilteredData = tempFilteredData.filter((item, i) => {
           return item.name
             .toLowerCase()
             .includes(action.payload.keyWord.toLowerCase());
         });
       }
       if (action.payload.name === "category") {
-        if (action.payload.keyWord === "All") {
-            newFilterdData = tempFilteredData
-          }else{
-            newFilterdData = tempFilteredData.filter((item, i) => {
-                return item.category === action.payload.keyWord;
+            tempFilteredData = tempFilteredData.filter((item, i) => {
+                return item.category.toString() === action.payload.keyWord.toString();
               });
-          }
+          
+      
+      }
+      if (action.payload.name === "company") {
+            tempFilteredData = tempFilteredData.filter((item, i) => {
+                return item.company.toString() === action.payload.keyWord.toString();
+              });
+          
       
       }
 
       return {
         ...state,
-        filteredProducts: newFilterdData,
+        filteredProducts: tempFilteredData,
       };
 
     default:
