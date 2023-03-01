@@ -59,17 +59,23 @@ const MainProductReducer = (state, action) => {
         });
       }
       if (action.payload.name === "category") {
+
             tempFilteredData = tempFilteredData.filter((item, i) => {
+              if(action.payload.keyWord==="All"){
+                return item
+              }
                 return item.category.toString() === action.payload.keyWord.toString();
               });
-          
       
       }
       if (action.payload.name === "company") {
             tempFilteredData = tempFilteredData.filter((item, i) => {
+              if(action.payload.keyWord==="All"){
+                return item
+              }
                 return item.company.toString() === action.payload.keyWord.toString();
               });
-          
+         
       
       }
 

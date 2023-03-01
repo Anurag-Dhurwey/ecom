@@ -32,7 +32,7 @@ const FilterProductsContext = ({ children }) => {
   }
 
   const getCategory=(data,property)=>{
-    console.log(data)
+    // console.log(data)
       let categoryArr=data.map((item,i)=>{
         return item[property]
       })
